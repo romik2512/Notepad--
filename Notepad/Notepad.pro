@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-06-16T20:44:55
+# Project created by QtCreator 2019-06-16T21:35:47
 #
 #-------------------------------------------------
 
@@ -26,13 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        text_editor.cpp
 
 HEADERS += \
-        mainwindow.h
+        text_editor.h
 
 FORMS += \
-        mainwindow.ui
+        text_editor.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

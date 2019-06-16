@@ -24,7 +24,11 @@ private slots:
     void SetFont();
     void SetFontColour();
     void SetBackgroundColour();
-
+    void Undo();
+    void Redo();
+    void Paste();
+    void Cut();
+    void Copy();
 
 private:
     Ui::Text_editor *ui;

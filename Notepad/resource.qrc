@@ -3,5 +3,17 @@
         <file>img/quit.png</file>
         <file>img/save.png</file>
         <file>img/saveas.png</file>
+        <file>img/about48.png</file>
+        <file>img/colour48.png</file>
+        <file>img/copy48.png</file>
+        <file>img/cut48.png</file>
+        <file>img/font48.png</file>
+        <file>img/fontColour48.png</file>
+        <file>img/newFile48.png</file>
+        <file>img/openFile.png</file>
+        <file>img/redo48.png</file>
+        <file>img/saveAs48.png</file>
+        <file>img/undo48.png</file>
+        <file>img/paste48.png</file>
     </qresource>
 </RCC>

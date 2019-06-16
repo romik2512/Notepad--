@@ -27,6 +27,11 @@ Text_editor::Text_editor(QWidget *parent) :
     connect(ui->Font, SIGNAL(triggered()), this, SLOT(SetFont()));
     connect(ui->FontColour, SIGNAL(triggered()), this, SLOT(SetFontColour()));
     connect(ui->BackgroundColour, SIGNAL(triggered()), this, SLOT(SetBackgroundColour()));
+    connect(ui->actionUndo, SIGNAL(triggered()), this, SLOT(Undo()));
+    connect(ui->actionRedo, SIGNAL(triggered()), this, SLOT(Redo()));
+    connect(ui->actionCut, SIGNAL(triggered()), this, SLOT(Cut()));
+    connect(ui->actionPaste, SIGNAL(triggered()), this, SLOT(Paste()));
+    connect(ui->actionCopy, SIGNAL(triggered()), this, SLOT(Copy()));
 
 }
 
@@ -111,3 +116,29 @@ void Text_editor::SetBackgroundColour()
     ui->textEdit->setStyleSheet("QTextEdit { background-color: "+Pal.name()+" }");
     ui->textEdit->show();
 }
+
+void Text_editor::Undo()
+{
+    ui->textEdit->undo();
+}
+
+void Text_editor::Redo()
+{
+    ui->textEdit->redo();
+}
+
+void Text_editor::Paste()
+{
+    ui->textEdit->paste();
+}
+
+void Text_editor::Cut()
+{
+    ui->textEdit->cut();
+}
+
+void Text_editor::Copy()
+{
+    ui->textEdit->copy();
+}
+

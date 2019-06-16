@@ -13,12 +13,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionOpen_triggered()
+void MainWindow::on_actionSave_triggered()
 {
 
 }
 
-void MainWindow::on_actionClose_triggered()
+void MainWindow::on_actionSave_as_triggered()
+{
+
+}
+
+void MainWindow::on_actionQuit_triggered()
 {
     QApplication::quit();
 }

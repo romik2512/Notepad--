@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-06-16T19:34:43
+# Project created by QtCreator 2019-06-16T20:05:40
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = untitled2
+TARGET = Notepad--
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use

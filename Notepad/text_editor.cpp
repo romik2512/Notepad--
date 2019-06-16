@@ -5,6 +5,11 @@
 #include <QTextStream>
 
 #include <QMessageBox>
+#include <QFontDialog>
+#include <QPalette>
+#include <QColorDialog>
+#include <QShortcut>
+
 
 
 Text_editor::Text_editor(QWidget *parent) :
@@ -19,6 +24,10 @@ Text_editor::Text_editor(QWidget *parent) :
     connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(SaveFile()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(Quit()));
     connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(NewFile()));
+    connect(ui->Font, SIGNAL(triggered()), this, SLOT(SetFont()));
+    connect(ui->FontColour, SIGNAL(triggered()), this, SLOT(SetFontColour()));
+    connect(ui->BackgroundColour, SIGNAL(triggered()), this, SLOT(SetBackgroundColour()));
+
 }
 
 Text_editor::~Text_editor()
@@ -31,7 +40,7 @@ void Text_editor::SaveFile()
 {
     QFile file(Opened_file_name);
       if(!file.open(QFile::WriteOnly | QFile::Text)) {
-          QMessageBox::warning(this,"..","I can't save file!");
+          QMessageBox::warning(this,"..","File was not saved!");
           return;
         }
       QTextStream out(&file);
@@ -65,7 +74,7 @@ void Text_editor::OpenFile()
       QFile file(File_name);
       Opened_file_name = File_name;
       if(!file.open(QFile::ReadOnly | QFile::Text)) {
-          QMessageBox::warning(this,"..","I can't open the file!");
+          QMessageBox::warning(this,"..","I can't open this file!");
           return;
         }
       QTextStream in(&file);
@@ -79,4 +88,26 @@ void Text_editor::NewFile()
 {
     Opened_file_name = "";
     ui->textEdit->setText("");
+}
+
+void Text_editor::SetFontColour()
+{
+    fontColour = QColorDialog::getColor();
+    ui->textEdit->setTextColor(fontColour);
+}
+
+void Text_editor::SetFont()
+{
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok, this);
+    if (ok){
+        ui->textEdit->setFont(font);
+    }else return;
+}
+
+void Text_editor::SetBackgroundColour()
+{
+    Pal = QColorDialog::getColor();
+    ui->textEdit->setStyleSheet("QTextEdit { background-color: "+Pal.name()+" }");
+    ui->textEdit->show();
 }

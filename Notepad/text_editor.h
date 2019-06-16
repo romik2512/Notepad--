@@ -21,13 +21,19 @@ private slots:
     void SaveFile();
     void Quit();
     void NewFile();
+    void SetFont();
+    void SetFontColour();
+    void SetBackgroundColour();
+
 
 private:
     Ui::Text_editor *ui;
 
     QString File_name;
     QString Opened_file_name;
-
+    QColor Pal;
+    QPalette Bcolour;
+    QColor fontColour;
 };
 
 #endif // TEXT_EDITOR_H

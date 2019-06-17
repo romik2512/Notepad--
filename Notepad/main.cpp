@@ -1,4 +1,5 @@
 #include "text_editor.h"
+#include "highlighter.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

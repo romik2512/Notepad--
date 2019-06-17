@@ -1,13 +1,16 @@
 #include "text_editor.h"
 #include "ui_text_editor.h"
+#include "highlighter.h"
 
 #include <QFileDialog>
 #include <QTextStream>
-#include <QMessageBox>
 #include <QFontDialog>
 #include <QPalette>
 #include <QColorDialog>
 #include <QShortcut>
+#include <QMessageBox>
+#include <QSyntaxHighlighter>
+#include <QTextCodec>
 
 
 
@@ -18,6 +21,11 @@ Text_editor::Text_editor(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setCentralWidget(ui->textEdit);
+
+    highlighter = new Highlighter(ui->textEdit->document());
+
+    codec = QTextCodec::codecForName("Windows-1251");
+
 
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(OpenFile()));
     connect(ui->actionSave_as, SIGNAL(triggered()), this, SLOT(SaveAsFile()));
@@ -58,6 +66,24 @@ Text_editor::~Text_editor()
 
 }
 
+void Text_editor::OpenFile()
+{
+    File_name = QFileDialog::getOpenFileName(this,"Open file");
+      QFile file(File_name);
+      Opened_file_name = File_name;
+       if (File_name.isEmpty()) {return;}
+        //if (!openTab(File_name)) {QMessageBox::warning(this,"ERROR","Файл уже открыт"); return;}
+      if(!file.open(QFile::ReadOnly | QFile::Text)) {
+          QMessageBox::warning(this,"..","I can't open this file!");
+          return;
+        }
+      QTextStream in(&file);
+      QString text = in.readAll();
+      ui->textEdit->setText(text);
+      highlighter = new Highlighter(ui->textEdit->document());
+      file.close();
+}
+
 void Text_editor::SaveFile()
 {
     QFile file(Opened_file_name);
@@ -88,24 +114,6 @@ void Text_editor::SaveAsFile()
 void Text_editor::Quit()
 {
     QApplication::quit();
-}
-
-void Text_editor::OpenFile()
-{
-    File_name = QFileDialog::getOpenFileName(this,"Open file");
-      QFile file(File_name);
-      Opened_file_name = File_name;
-       if (File_name.isEmpty()) {return;}
-        //if (!openTab(File_name)) {QMessageBox::warning(this,"ERROR","Файл уже открыт"); return;}
-      if(!file.open(QFile::ReadOnly | QFile::Text)) {
-          QMessageBox::warning(this,"..","I can't open this file!");
-          return;
-        }
-      QTextStream in(&file);
-      QString text = in.readAll();
-      ui->textEdit->setText(text);
-     // highlighter = new Highlighter(ui->textEdit->document());
-      file.close();
 }
 
 void Text_editor::NewFile()

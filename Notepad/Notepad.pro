@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-06-16T21:35:47
+# Project created by QtCreator 2019-03-31T17:57:11
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Notepad
+TARGET = Text_editor
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        text_editor.cpp
+        text_editor.cpp \
+        highlighter.cpp
+RESOURCES += \
+        resource.qrc \
 
 HEADERS += \
-        text_editor.h
+        text_editor.h \
+        highlighter.h
 
 FORMS += \
         text_editor.ui

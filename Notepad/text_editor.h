@@ -2,6 +2,10 @@
 #define TEXT_EDITOR_H
 
 #include <QMainWindow>
+#include <QRegExp>
+#include <QtQuick/QQuickTextDocument>
+#include <QTextEdit>
+#include "highlighter.h"
 
 namespace Ui {
 class Text_editor;
@@ -34,12 +38,20 @@ private:
     Ui::Text_editor *ui;
 
     QString File_name;
+
     QString Opened_file_name;
     QColor Pal;
     QPalette Bcolour;
     QColor fontColour;
 
     QShortcut *HotKeySave, *HotKeyOpen, *HotKeyUndo, *HotKeyRedo;
+
+    Highlighter *highlighter;
+
+    QTextEdit *editor;
+
+    QTextCodec *codec;
+
 };
 
 #endif // TEXT_EDITOR_H

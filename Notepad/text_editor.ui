@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>823</width>
-    <height>519</height>
+    <width>821</width>
+    <height>520</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,14 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>821</width>
+      <width>831</width>
       <height>441</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black;
+color: rgb(255, 149, 62);
+font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
   </widget>
@@ -30,9 +35,14 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>823</width>
-     <height>21</height>
+     <width>821</width>
+     <height>25</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 150, 80);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+background:rgb(0, 0, 0);</string>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -70,6 +80,9 @@
    <addaction name="menuEdit"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true">background: black;</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -88,7 +101,11 @@
    <addaction name="actionQuit"/>
    <addaction name="separator"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">background:rgb(0, 0, 0);</string>
+   </property>
+  </widget>
   <action name="actionNew">
    <property name="icon">
     <iconset resource="resource.qrc">
@@ -137,7 +154,7 @@
   <action name="Font">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/rec/img/font48.png</normaloff>:/rec/img/font48.png</iconset>
+     <normaloff>:/rec/img/font-icon-free-download-as-png-and-ico-formats-veryiconm-24.png</normaloff>:/rec/img/font-icon-free-download-as-png-and-ico-formats-veryiconm-24.png</iconset>
    </property>
    <property name="text">
     <string>Font</string>

@@ -3,12 +3,12 @@
 
 #include <QFileDialog>
 #include <QTextStream>
-
 #include <QMessageBox>
 #include <QFontDialog>
 #include <QPalette>
 #include <QColorDialog>
 #include <QShortcut>
+
 
 
 
@@ -32,6 +32,23 @@ Text_editor::Text_editor(QWidget *parent) :
     connect(ui->actionCut, SIGNAL(triggered()), this, SLOT(Cut()));
     connect(ui->actionPaste, SIGNAL(triggered()), this, SLOT(Paste()));
     connect(ui->actionCopy, SIGNAL(triggered()), this, SLOT(Copy()));
+
+
+    HotKeySave = new QShortcut(this);
+    HotKeySave->setKey(Qt::CTRL+Qt::Key_S);
+    connect(HotKeySave, SIGNAL(activated()), this, SLOT(SaveFile()));
+
+    HotKeyOpen = new QShortcut(this);
+    HotKeyOpen->setKey(Qt::CTRL+Qt::Key_O);
+    connect(HotKeyOpen, SIGNAL(activated()), this, SLOT(OpenFile()));
+
+    HotKeyUndo = new QShortcut(this);
+    HotKeyUndo->setKey(Qt::CTRL+Qt::Key_Z);
+    connect(HotKeyUndo, SIGNAL(activated()), this, SLOT(Undo()));
+
+    HotKeyRedo = new QShortcut(this);
+    HotKeyRedo->setKey(Qt::CTRL+Qt::Key_U);
+    connect(HotKeyRedo, SIGNAL(activated()), this, SLOT(Redo()));
 
 }
 
@@ -78,6 +95,8 @@ void Text_editor::OpenFile()
     File_name = QFileDialog::getOpenFileName(this,"Open file");
       QFile file(File_name);
       Opened_file_name = File_name;
+       if (File_name.isEmpty()) {return;}
+        //if (!openTab(File_name)) {QMessageBox::warning(this,"ERROR","Файл уже открыт"); return;}
       if(!file.open(QFile::ReadOnly | QFile::Text)) {
           QMessageBox::warning(this,"..","I can't open this file!");
           return;
@@ -98,7 +117,9 @@ void Text_editor::NewFile()
 void Text_editor::SetFontColour()
 {
     fontColour = QColorDialog::getColor();
-    ui->textEdit->setTextColor(fontColour);
+    QPalette newPalette;
+    newPalette.setColor(QPalette::Text,fontColour);
+    ui->textEdit->setPalette(newPalette);
 }
 
 void Text_editor::SetFont()

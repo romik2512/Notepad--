@@ -38,6 +38,8 @@ private:
     QColor Pal;
     QPalette Bcolour;
     QColor fontColour;
+
+    QShortcut *HotKeySave, *HotKeyOpen, *HotKeyUndo, *HotKeyRedo;
 };
 
 #endif // TEXT_EDITOR_H

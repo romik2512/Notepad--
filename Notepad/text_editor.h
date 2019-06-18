@@ -17,6 +17,12 @@ class Text_editor : public QMainWindow
 
 public:
     explicit Text_editor(QWidget *parent = nullptr);
+    enum codecType {
+            UTF8 = 0,
+            WINDOWS1251 = 1,
+            IBM866 = 2,
+            CP1251 = 3
+        };
     ~Text_editor();
 
 private slots:
@@ -33,11 +39,18 @@ private slots:
     void Paste();
     void Cut();
     void Copy();
+    void codecWindows1251();
+    void codecIBM866();
+    void codecCP1251();
+    void codecUTF8();
+     void codecButton(codecType type);
+
 
 private:
     Ui::Text_editor *ui;
 
-    QString File_name;
+    QString File_name, _str;
+    QByteArray _strUTF8;
 
     QString Opened_file_name;
     QColor Pal;

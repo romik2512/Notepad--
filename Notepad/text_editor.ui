@@ -75,9 +75,19 @@ background:rgb(0, 0, 0);</string>
     <addaction name="actionPaste"/>
     <addaction name="actionCopy"/>
    </widget>
+   <widget class="QMenu" name="menuCodec">
+    <property name="title">
+     <string>Codec</string>
+    </property>
+    <addaction name="actionUTF_8"/>
+    <addaction name="actionWindows1251"/>
+    <addaction name="actionIBM866"/>
+    <addaction name="actionCP1251"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuStyle"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuCodec"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="styleSheet">
@@ -221,6 +231,26 @@ background:rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionUTF_8">
+   <property name="text">
+    <string>UTF-8</string>
+   </property>
+  </action>
+  <action name="actionWindows1251">
+   <property name="text">
+    <string>Windows1251</string>
+   </property>
+  </action>
+  <action name="actionIBM866">
+   <property name="text">
+    <string>IBM866</string>
+   </property>
+  </action>
+  <action name="actionCP1251">
+   <property name="text">
+    <string>CP1251</string>
    </property>
   </action>
  </widget>

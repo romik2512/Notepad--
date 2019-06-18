@@ -41,6 +41,10 @@ Text_editor::Text_editor(QWidget *parent) :
     connect(ui->actionPaste, SIGNAL(triggered()), this, SLOT(Paste()));
     connect(ui->actionCopy, SIGNAL(triggered()), this, SLOT(Copy()));
 
+    connect(ui->actionCP1251, SIGNAL(triggered()), this, SLOT(codecCP1251()));
+    connect(ui->actionUTF_8, SIGNAL(triggered()), this, SLOT(codecUTF8()));
+    connect(ui->actionIBM866, SIGNAL(triggered()), this, SLOT(codecIBM866()));
+    connect(ui->actionWindows1251, SIGNAL(triggered()), this, SLOT(codecWindows1251()));
 
     HotKeySave = new QShortcut(this);
     HotKeySave->setKey(Qt::CTRL+Qt::Key_S);
@@ -169,5 +173,85 @@ void Text_editor::Cut()
 void Text_editor::Copy()
 {
     ui->textEdit->copy();
+}
+
+void Text_editor::codecCP1251()
+{
+    codecButton(CP1251);
+
+        _str = ui->textEdit->toPlainText();
+        _strUTF8 = _str.toUtf8();
+        codec = QTextCodec::codecForName("CP-1251");
+        _str = codec->toUnicode(_strUTF8);
+        ui->textEdit->clear();
+        ui->textEdit->setText(_str);
+}
+
+void Text_editor::codecIBM866()
+{
+    codecButton(IBM866);
+
+        _str = ui->textEdit->toPlainText();
+        _strUTF8 = _str.toUtf8();
+        codec = QTextCodec::codecForName("CP-1251");
+        _str = codec->toUnicode(_strUTF8);
+        codec = QTextCodec::codecForName("IBM 866");
+        _str = codec->toUnicode(_strUTF8);
+        ui->textEdit->clear();
+        ui->textEdit->setText(_str);
+}
+
+void Text_editor::codecWindows1251()
+{
+    codecButton(WINDOWS1251);
+
+        _str = ui->textEdit->toPlainText();
+        _strUTF8 = _str.toUtf8();
+        codec = QTextCodec::codecForName("Windows-1251");
+        _str = codec->toUnicode(_strUTF8);
+        ui->textEdit->clear();
+        ui->textEdit->setText(_str);
+}
+
+void Text_editor::codecUTF8()
+{
+    codecButton(UTF8);
+
+        _str = ui->textEdit->toPlainText();
+        _strUTF8 = _str.toUtf8();
+        codec = QTextCodec::codecForName("UTF-8");
+        _str = codec->toUnicode(_strUTF8);
+        ui->textEdit->clear();
+        ui->textEdit->setText(_str);
+}
+
+void Text_editor::codecButton(codecType type){
+    switch (type){
+    case UTF8:
+        ui->actionCP1251->setEnabled(true);
+        ui->actionIBM866->setEnabled(true);
+        ui->actionUTF_8->setDisabled(true);
+        ui->actionWindows1251->setEnabled(true);
+        break;
+    case WINDOWS1251:
+        ui->actionCP1251->setEnabled(true);
+        ui->actionIBM866->setEnabled(true);
+        ui->actionUTF_8->setEnabled(true);
+        ui->actionWindows1251->setDisabled(true);
+        break;
+    case IBM866:
+        ui->actionCP1251->setEnabled(true);
+        ui->actionIBM866->setDisabled(true);
+        ui->actionUTF_8->setEnabled(true);
+        ui->actionWindows1251->setEnabled(true);
+        break;
+    case CP1251:
+        ui->actionCP1251->setDisabled(true);
+        ui->actionIBM866->setEnabled(true);
+        ui->actionUTF_8->setEnabled(true);
+        ui->actionWindows1251->setEnabled(true);
+        break;
+
+    }
 }
 

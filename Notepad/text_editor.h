@@ -45,9 +45,9 @@ private slots:
     void codecUTF8();
      void codecButton(codecType type);
 
-
 private:
     Ui::Text_editor *ui;
+   // Compiler* compiler;
 
     QString File_name, _str;
     QByteArray _strUTF8;

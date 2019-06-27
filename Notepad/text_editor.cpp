@@ -90,8 +90,20 @@ void Text_editor::OpenFile()
 
 void Text_editor::SaveFile()
 {
+       if (Opened_file_name==""){
+        Opened_file_name = QFileDialog::getSaveFileName();
+            QFile out(Opened_file_name);
+            if (out.open(QIODevice::WriteOnly | QFile::Text)) {
+                QTextStream stream(&out);
+                QString text = ui->textEdit->toPlainText();
+                stream << text;
+                out.flush();
+                out.close();
+            }
+
+    } else{
     QFile file(Opened_file_name);
-      if(!file.open(QFile::WriteOnly | QFile::Text)) {
+      if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
           QMessageBox::warning(this,"..","File was not saved!");
           return;
         }
@@ -100,13 +112,14 @@ void Text_editor::SaveFile()
       out << text;
       file.flush();
       file.close();
+    }
 }
 
 void Text_editor::SaveAsFile()
 {
     Opened_file_name = QFileDialog::getSaveFileName();
         QFile out(Opened_file_name);
-        if (out.open(QIODevice::WriteOnly)) {
+        if (out.open(QIODevice::WriteOnly | QFile::Text)) {
             QTextStream stream(&out);
             QString text = ui->textEdit->toPlainText();
             stream << text;
@@ -117,11 +130,21 @@ void Text_editor::SaveAsFile()
 
 void Text_editor::Quit()
 {
+    QMessageBox::StandardButton reply= QMessageBox::question(this,"MESSAGE","Do you want save this file?",QMessageBox::Yes | QMessageBox::No);
+
+    if(reply==QMessageBox::Yes){
+        SaveAsFile();
+    }
     QApplication::quit();
 }
 
 void Text_editor::NewFile()
 {
+    QMessageBox::StandardButton reply= QMessageBox::question(this,"MESSAGE","Do you want save this file?",QMessageBox::Yes | QMessageBox::No);
+
+    if(reply==QMessageBox::Yes){
+        SaveAsFile();
+    }
     Opened_file_name = "";
     ui->textEdit->setText("");
 }

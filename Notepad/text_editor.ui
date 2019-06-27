@@ -26,7 +26,7 @@
     <property name="styleSheet">
      <string notr="true">background:black;
 color: rgb(255, 149, 62);
-font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
+</string>
     </property>
    </widget>
   </widget>
@@ -118,7 +118,7 @@ background:rgb(0, 0, 0);</string>
   </widget>
   <action name="actionNew">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/newFile48.png</normaloff>:/rec/img/newFile48.png</iconset>
    </property>
    <property name="text">
@@ -127,7 +127,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/openFile.png</normaloff>:/rec/img/openFile.png</iconset>
    </property>
    <property name="text">
@@ -136,7 +136,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/save.png</normaloff>:/rec/img/save.png</iconset>
    </property>
    <property name="text">
@@ -145,7 +145,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionSave_as">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/saveas.png</normaloff>:/rec/img/saveas.png</iconset>
    </property>
    <property name="text">
@@ -154,7 +154,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/quit.png</normaloff>:/rec/img/quit.png</iconset>
    </property>
    <property name="text">
@@ -163,7 +163,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="Font">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/font-icon-free-download-as-png-and-ico-formats-veryiconm-24.png</normaloff>:/rec/img/font-icon-free-download-as-png-and-ico-formats-veryiconm-24.png</iconset>
    </property>
    <property name="text">
@@ -172,7 +172,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="FontColour">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/fontColour48.png</normaloff>:/rec/img/fontColour48.png</iconset>
    </property>
    <property name="text">
@@ -181,7 +181,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="BackgroundColour">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/colour48.png</normaloff>:/rec/img/colour48.png</iconset>
    </property>
    <property name="text">
@@ -190,7 +190,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionUndo">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/undo48.png</normaloff>:/rec/img/undo48.png</iconset>
    </property>
    <property name="text">
@@ -199,7 +199,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionRedo">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/redo48.png</normaloff>:/rec/img/redo48.png</iconset>
    </property>
    <property name="text">
@@ -208,7 +208,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/cut48.png</normaloff>:/rec/img/cut48.png</iconset>
    </property>
    <property name="text">
@@ -217,7 +217,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionPaste">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/paste48.png</normaloff>:/rec/img/paste48.png</iconset>
    </property>
    <property name="text">
@@ -226,7 +226,7 @@ background:rgb(0, 0, 0);</string>
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset>
      <normaloff>:/rec/img/copy48.png</normaloff>:/rec/img/copy48.png</iconset>
    </property>
    <property name="text">
@@ -255,8 +255,6 @@ background:rgb(0, 0, 0);</string>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

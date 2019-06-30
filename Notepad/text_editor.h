@@ -44,6 +44,9 @@ private slots:
     void codecCP1251();
     void codecUTF8();
      void codecButton(codecType type);
+    void HighOff();
+    void HighOn();
+
 
 private:
     Ui::Text_editor *ui;

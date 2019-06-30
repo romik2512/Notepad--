@@ -45,6 +45,8 @@ Text_editor::Text_editor(QWidget *parent) :
     connect(ui->actionUTF_8, SIGNAL(triggered()), this, SLOT(codecUTF8()));
     connect(ui->actionIBM866, SIGNAL(triggered()), this, SLOT(codecIBM866()));
     connect(ui->actionWindows1251, SIGNAL(triggered()), this, SLOT(codecWindows1251()));
+    connect(ui->actionOff, SIGNAL(triggered()), this, SLOT(HighOff()));
+    connect(ui->actionOn, SIGNAL(triggered()), this, SLOT(HighOn()));
 
     HotKeySave = new QShortcut(this);
     HotKeySave->setKey(Qt::CTRL+Qt::Key_S);
@@ -67,7 +69,7 @@ Text_editor::Text_editor(QWidget *parent) :
 Text_editor::~Text_editor()
 {
     delete ui;
-
+    delete highlighter;
 }
 
 void Text_editor::OpenFile()
@@ -278,3 +280,17 @@ void Text_editor::codecButton(codecType type){
     }
 }
 
+
+void Text_editor::HighOff()
+{
+   delete highlighter;
+   ui->actionOff->setDisabled(true);
+   ui->actionOn->setEnabled(true);
+}
+
+void Text_editor::HighOn()
+{
+    highlighter = new Highlighter(ui->textEdit->document());
+    ui->actionOn->setDisabled(true);
+    ui->actionOff->setEnabled(true);
+}
